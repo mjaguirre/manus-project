@@ -6,7 +6,6 @@ import { Form, Select, InputNumber, Switch, Slider, Button } from 'antd';
 import { SmileFilled } from '@ant-design/icons';
 
 import Link from 'next/link';
-import DatePicker from '../components/DatePicker';
 
 const FormItem = Form.Item;
 const { Option } = Select;
@@ -19,8 +18,8 @@ export default function Home() {
   return (
     <div style={content}>
       <div className="text-center mb-5">
-        <Link href="#">
-          <a className="logo mr-0">
+        <Link href="google.com">
+          <a className="logo mr-0" href="/">
             <SmileFilled size={48} strokeWidth={1} />
           </a>
         </Link>
@@ -59,9 +58,6 @@ export default function Home() {
             </Select>
           </FormItem>
 
-          <FormItem label="DatePicker" labelCol={{ span: 8 }} wrapperCol={{ span: 8 }}>
-            <DatePicker name="startDate" />
-          </FormItem>
           <FormItem style={{ marginTop: 48 }} wrapperCol={{ span: 8, offset: 8 }}>
             <Button size="large" type="primary" htmlType="submit">
               OK
