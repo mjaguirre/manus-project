@@ -12,14 +12,20 @@ const Component = ({ item }) => {
   useEffect(() => {
     setInterval(() => {
       setLoading(false);
-    }, 1500);
+    }, 300);
   }, []);
 
   return (
     <Card
       style={{ width: '100%' }}
       loading={loadingInfo}
-      cover={<img alt={item.name} src={item.image} />}
+      cover={
+        loadingInfo ? (
+          <img alt={item.name} src="/user.png" />
+        ) : (
+          <img alt={item.name} src={item.image} />
+        )
+      }
     >
       <Meta
         title={item.name}
