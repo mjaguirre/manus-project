@@ -4,6 +4,8 @@ import { Card } from 'antd';
 
 import Description from '../CardContent';
 
+import './index.less';
+
 const { Meta } = Card;
 
 const Component = ({ item }) => {
@@ -17,7 +19,6 @@ const Component = ({ item }) => {
 
   return (
     <Card
-      style={{ width: '100%' }}
       loading={loadingInfo}
       cover={
         loadingInfo ? (

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Col, Row, Pagination } from 'antd';
+import { Col, Row, Pagination, Spin } from 'antd';
 
 import { fetchCharactersThunk } from '../../../store/base/baseSlice';
 
 import CardComponent from '../../molecules/CardComponent';
+
+import './index.less';
 
 const CardGrid = () => {
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ const CardGrid = () => {
     <div className="container">
       <Row justify="center">
         {loading ? (
-          <h1>Cargando</h1>
+          <Spin size="large" />
         ) : (
           <Col span={24}>
             <Row justify="center" className="paginationContainer">
@@ -38,7 +40,7 @@ const CardGrid = () => {
             </Row>
             <Row justify="space-around">
               {currentList?.map((item) => (
-                <Col xs={10} md={7} xl={5} xxl={4} style={{ margin: '10px' }}>
+                <Col className="cardContainer" xs={10} md={7} xl={5} xxl={4}>
                   <CardComponent item={item} />
                 </Col>
               ))}
