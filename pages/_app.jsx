@@ -1,10 +1,32 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import 'antd/dist/antd.css';
-import '../styles/vars.css';
-import '../styles/global.css';
+import { Provider } from 'react-redux';
 
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+import { ConfigProvider, Grid } from 'antd';
+import es from 'antd/lib/locale/es_ES';
+import store from '../src/store/index';
+
+import 'antd/dist/antd.less';
+import '../styles/theme/antd.less';
+
+const { useBreakpoint } = Grid;
+
+function MyApp({ Component, pageProps, path }) {
+  const screens = useBreakpoint();
+
+  return (
+    <>
+      <ConfigProvider locale={es}>
+        <Provider store={store}>
+          <div className={screens.xs ? 'mobile' : 'web'}>
+            <Component {...pageProps} />
+          </div>
+        </Provider>
+      </ConfigProvider>
+    </>
+  );
 }
+
+export default MyApp;

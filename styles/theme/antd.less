@@ -1,0 +1,97 @@
+@import '~antd/dist/antd.less';
+
+// ! General
+@primary-color: #ff5000; // * color primario para todos los componentes
+@title-color: #212121;
+
+.mobile {
+  h1,
+  .h1 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 38px;
+    color: @title-color;
+  }
+
+  h2,
+  .h2 {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 33px;
+    color: @title-color;
+  }
+}
+
+.web {
+  h1,
+  .h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+    color: @title-color;
+  }
+
+  h2,
+  .h2 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 33px;
+    color: @title-color;
+  }
+}
+
+.ant-btn {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.ant-btn-text {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.ant-card-bordered {
+  border: solid 0.5px @primary-color;
+  border-radius: 5px;
+  padding: 15px;
+  height: 450px;
+}
+
+//! Other
+
+.ant-layout-header {
+  background-color: white;
+  border-bottom: solid 2px @primary-color;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.ant-layout {
+  background-color: white;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+}
