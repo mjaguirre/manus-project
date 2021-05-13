@@ -8,6 +8,8 @@ import {
   faTransgenderAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
+import './index.less';
+
 const Description = ({ gender, location, status }) => (
   <Col>
     <h4>
