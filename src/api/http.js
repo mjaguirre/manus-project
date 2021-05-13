@@ -9,7 +9,7 @@ const defaultOptions = {
 };
 
 //  Hay que cambiar este por una variable de entorno
-axios.defaults.baseURL = 'https://pokeapi.co/api/v2/';
+axios.defaults.baseURL = 'https://rickandmortyapi.com/api/';
 
 export default {
   get: (url, options = {}) => axios.get(url, { ...defaultOptions, ...options }),

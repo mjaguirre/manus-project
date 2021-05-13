@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import { pokeReducer } from './poke/pokeSlice';
+import { baseReducer } from './base/baseSlice';
 
 const rootReducer = combineReducers({
-  poke: pokeReducer,
+  base: baseReducer,
 });
 
 export default rootReducer;
