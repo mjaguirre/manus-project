@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Col } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +12,6 @@ import './index.less';
 const Description = ({ gender, location, status }) => (
   <Col>
     <h4>
-      {' '}
       <FontAwesomeIcon icon={faMapMarked} /> {location}
     </h4>
     <h4>
