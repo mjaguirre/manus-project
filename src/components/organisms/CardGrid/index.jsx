@@ -12,36 +12,23 @@ import Filter from '../../molecules/FilterComponent';
 import './index.less';
 
 const CardGrid = () => {
-  const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const [name, setName] = useState('');
-  const [status, setStatus] = useState('');
-  const [species, setSpecies] = useState('');
-  const [gender, setGender] = useState('');
+  const [values, setValues] = useState({
+    name: undefined,
+    status: undefined,
+    species: undefined,
+    gender: undefined,
+  });
+
+  const dispatch = useDispatch();
   const { currentList, loading, count, pageSize, error } = useSelector((state) => state.base);
 
   useEffect(() => {
-    dispatch(
-      fetchCharactersThunk({
-        page: 1,
-        species,
-        gender,
-        status,
-        name,
-      })
-    );
-  }, [name, status, species, gender]);
+    dispatch(fetchCharactersThunk({ ...values, page: 1 }));
+  }, [values]);
 
   useEffect(() => {
-    dispatch(
-      fetchCharactersThunk({
-        page,
-        species,
-        gender,
-        status,
-        name,
-      })
-    );
+    dispatch(fetchCharactersThunk({ ...values, page }));
   }, [page]);
 
   const onChange = (e) => {
@@ -56,12 +43,7 @@ const CardGrid = () => {
         ) : (
           <Col span={24}>
             <Row justify="space-around" className="filterContainer">
-              <Filter
-                actionName={setName}
-                actionStatus={setStatus}
-                actionSpecies={setSpecies}
-                actionGender={setGender}
-              />
+              <Filter action={setValues} />
             </Row>
 
             {error ? (
