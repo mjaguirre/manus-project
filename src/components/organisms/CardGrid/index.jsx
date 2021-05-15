@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Col, Row, Pagination, Spin, Modal } from 'antd';
+import { Col, Row, Pagination, Spin } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchCharactersThunk } from '../../../store/base/baseSlice';
 
@@ -16,8 +18,7 @@ const CardGrid = () => {
   const [status, setStatus] = useState('');
   const [species, setSpecies] = useState('');
   const [gender, setGender] = useState('');
-  const [visible, setVisible] = useState(false);
-  const { currentList, loading, count, pageSize } = useSelector((state) => state.base);
+  const { currentList, loading, count, pageSize, error } = useSelector((state) => state.base);
 
   useEffect(() => {
     dispatch(
@@ -54,18 +55,6 @@ const CardGrid = () => {
           <Spin size="large" />
         ) : (
           <Col span={24}>
-            <Modal
-              title="Modal 1000px width"
-              centered
-              visible={visible}
-              onOk={() => setVisible(false)}
-              onCancel={() => setVisible(false)}
-              width={1000}
-            >
-              <p>some contents...</p>
-              <p>some contents...</p>
-              <p>some contents...</p>
-            </Modal>
             <Row justify="space-around" className="filterContainer">
               <Filter
                 actionName={setName}
@@ -74,34 +63,49 @@ const CardGrid = () => {
                 actionGender={setGender}
               />
             </Row>
-            <Row justify="center" className="paginationContainer">
-              <Pagination
-                size="small"
-                total={count}
-                pageSize={pageSize}
-                showSizeChanger={false}
-                onChange={onChange}
-                defaultCurrent={page}
-              />
-            </Row>
 
-            <Row justify="space-around">
-              {currentList?.map((item) => (
-                <Col className="cardContainer" xs={10} md={7} xl={5} xxl={4}>
-                  <CardComponent item={item} />
+            {error ? (
+              <Row justify="center">
+                <Col>
+                  <FontAwesomeIcon icon={faExclamation} size="6x" className="errorIcon" />
                 </Col>
-              ))}
-            </Row>
-            <Row justify="center" className="paginationContainer">
-              <Pagination
-                size="small"
-                total={count}
-                pageSize={pageSize}
-                showSizeChanger={false}
-                onChange={onChange}
-                defaultCurrent={page}
-              />
-            </Row>
+                <Col>
+                  <h3 className="errorText">
+                    No matches found for the last search. Please try with a diferent filter.
+                  </h3>
+                </Col>
+              </Row>
+            ) : (
+              <>
+                <Row justify="center" className="paginationContainer">
+                  <Pagination
+                    size="small"
+                    total={count}
+                    pageSize={pageSize}
+                    showSizeChanger={false}
+                    onChange={onChange}
+                    defaultCurrent={page}
+                  />
+                </Row>
+                <Row justify="space-around">
+                  {currentList?.map((item) => (
+                    <Col className="cardContainer" xs={10} md={7} xl={5} xxl={4}>
+                      <CardComponent item={item} />
+                    </Col>
+                  ))}
+                </Row>
+                <Row justify="center" className="paginationContainer">
+                  <Pagination
+                    size="small"
+                    total={count}
+                    pageSize={pageSize}
+                    showSizeChanger={false}
+                    onChange={onChange}
+                    defaultCurrent={page}
+                  />
+                </Row>
+              </>
+            )}
           </Col>
         )}
       </Row>
