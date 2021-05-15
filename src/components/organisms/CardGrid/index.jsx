@@ -24,6 +24,7 @@ const CardGrid = () => {
   const { currentList, loading, count, pageSize, error } = useSelector((state) => state.base);
 
   useEffect(() => {
+    setPage(1);
     dispatch(fetchCharactersThunk({ ...values, page: 1 }));
   }, [values]);
 
