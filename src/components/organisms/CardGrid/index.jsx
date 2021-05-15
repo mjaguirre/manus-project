@@ -65,16 +65,18 @@ const CardGrid = () => {
             </Row>
 
             {error ? (
-              <Row justify="center">
-                <Col>
-                  <FontAwesomeIcon icon={faExclamation} size="6x" className="errorIcon" />
-                </Col>
-                <Col>
-                  <h3 className="errorText">
-                    No matches found for the last search. Please try with a diferent filter.
-                  </h3>
-                </Col>
-              </Row>
+              <>
+                <Row justify="center">
+                  <Col>
+                    <FontAwesomeIcon icon={faExclamation} size="6x" className="errorIcon" />
+                  </Col>
+                  <Col span={24}>
+                    <h3 className="errorText">
+                      No matches found for the last search. Please try with a diferent filter.
+                    </h3>
+                  </Col>
+                </Row>
+              </>
             ) : (
               <>
                 <Row justify="center" className="paginationContainer">
