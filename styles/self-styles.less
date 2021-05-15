@@ -21,6 +21,13 @@
     line-height: 33px;
     color: @title-color;
   }
+
+  .ant-card-bordered {
+    border: solid 0.5px @primary-color;
+    border-radius: 5px;
+    padding: 10px;
+    height: 350px;
+  }
 }
 
 .web {
@@ -39,27 +46,31 @@
     line-height: 33px;
     color: @title-color;
   }
+
+  .ant-card-bordered {
+    border: solid 0.5px @primary-color;
+    border-radius: 5px;
+    padding: 15px;
+    height: 480px;
+  }
 }
 
 .ant-btn {
   font-weight: bold;
-  font-size: 20px;
-  line-height: 24px;
-}
-
-.ant-btn-text {
-  font-weight: normal;
   font-size: 14px;
-  line-height: 22px;
-}
-
-.ant-card-bordered {
+  line-height: 20px;
   border: solid 0.5px @primary-color;
-  border-radius: 5px;
-  padding: 15px;
-  height: 450px;
+  width: 100%;
 }
 
+.ant-btn:hover {
+  background-color: @primary-color;
+  color: black;
+}
+
+.ant-select {
+  width: 100%;
+}
 //! Other
 
 .ant-layout-header {
@@ -86,6 +97,7 @@
 html,
 body {
   height: 100%;
+  background-color: white;
 }
 
 body {

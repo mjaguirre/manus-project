@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getCharactersList } from '../../api/characters';
+import getCharactersList from '../../api/characters';
 
 const initialState = {
   currentList: [],
@@ -36,15 +36,16 @@ const baseSlice = createSlice({
       state.currentList = action.payload.results;
       state.count = action.payload.info.count;
       state.pageSize = action.payload.info.count / action.payload.info.pages;
-      state.error = '';
+      state.error = false;
       state.loading = false;
     },
     [fetchCharacters.rejected]: (state) => {
+      state.currentList = [];
       state.loading = false;
-      state.error = 'Hubo un problema recuperando los datos, intenta nuevamente';
+      state.error = true;
     },
     [fetchCharacters.pending]: (state) => {
-      state.error = '';
+      state.error = false;
       state.loading = true;
     },
   },
