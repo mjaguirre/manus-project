@@ -1,21 +1,25 @@
-# Ant Design example
+# Prueba Frontend
 
-This example shows how to use Next.js along with [Ant Design of React](https://ant.design). This is intended to show the integration of this UI toolkit with the Framework.
+## Estilos
 
-## Deploy your own
+- Los estilos de esta aplicación fueron desarrollados mediante el uso de ant-design. Todos corresponden a un theme general ubicado el la carpeta styles, salvo alguna excepciones donde se agregaron estilos propios de un componente específico en un archivo separado a dicho componente
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## Uso
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-ant-design&project-name=with-ant-design&repository-name=with-ant-design)
+- Esta aplicación utiliza next.js.
+- Para ejecutarla de manera local, instalar las dependencias con yarn install y luego ejecutar yarn dev. La aplicación se ejecutará en el puerto 3000
+- Además, esta aplicación se encuentra en producción el heroku. el url es https://manus-app.herokuapp.com/
 
-## How to use
+## Metodología
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+- Para el desarrollo se optó por el uso de Atomic Design para definir componentes reciclables.
+- Se utilizó redux para el almacenamiento dentro de la app, aunque se podía haber optado por no utilizar dicha herramienta debido a la simplicidad de la solucion requerida.
 
-```bash
-npx create-next-app --example with-ant-design with-ant-design-app
-# or
-yarn create next-app --example with-ant-design with-ant-design-app
-```
+## Dependencias
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- Las dependencias de esta prueba estan listadas en el archivo package.json. Estas se encuentran separadas entre las dependencias generales y aquellas que solo son necesarias para un ambiente de desarrollo.
+
+## API
+
+- Esta prueba esta desarrollada usando la api de rick & morty 'https://rickandmortyapi.com/api/'
+- Si bien es mejor práctica dejar el url de la api en una variable de entorno, esta puesta en el código para que el corrector o correctora no tenga que crear un archivo .env en caso de que quiera ejecutarla de manera local
